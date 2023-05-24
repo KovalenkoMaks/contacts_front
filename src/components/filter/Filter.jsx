@@ -1,3 +1,4 @@
+import React from 'react';
 
 const Filter = ({ setFiltredContacts }) => {
     return (
@@ -8,9 +9,9 @@ const Filter = ({ setFiltredContacts }) => {
                 placeholder="Find"
                 type="text"
                 name="filter"
-                onChange={e => setFiltredContacts(e.target.value)}
+                onChange={(e) => setFiltredContacts(e.target.value)}
             />
         </>
     );
-}
-export default Filter
+};
+export default Filter;

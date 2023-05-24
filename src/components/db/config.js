@@ -1,15 +1,15 @@
-import { initializeApp } from "firebase/app";
-import { getFirestore } from "firebase/firestore";
+import { initializeApp } from 'firebase/app';
+import { getFirestore } from 'firebase/firestore';
 
 const firebaseConfig = {
-    apiKey: "AIzaSyD26pUm2WUSFU0YLZk9LcAr7qnHlcXvJEQ",
-    authDomain: "contacts-df9cc.firebaseapp.com",
-    projectId: "contacts-df9cc",
-    storageBucket: "contacts-df9cc.appspot.com",
-    messagingSenderId: "182250173432",
-    appId: "1:182250173432:web:dc384ee543dbf6963fdc0d",
-    measurementId: "G-70PJ6C39BN"
+    apiKey: 'AIzaSyCLeMqTTtfVVaAo3MgPBTHpaoRfmTs60aM',
+    authDomain: 'contacts1-3eb1c.firebaseapp.com',
+    projectId: 'contacts1-3eb1c',
+    storageBucket: 'contacts1-3eb1c.appspot.com',
+    messagingSenderId: '94779472344',
+    appId: '1:94779472344:web:34519e6f820e47d2429aad',
+    measurementId: 'G-BKP91QLB2Z',
 };
 
 const app = initializeApp(firebaseConfig);
-export const db = getFirestore(app)
+export const db = getFirestore(app);
