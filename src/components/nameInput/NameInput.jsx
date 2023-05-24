@@ -25,7 +25,7 @@ const validationSchema = Yup.object({
 const NameInput = ({ contactsCollect, setDataForRender, setData }) => {
     const handleSubmit = async (values, { resetForm }) => {
         await addDoc(contactsCollect, { ...values, createdAt: new Date() });
-        setData((prevData) => {
+        setDataForRender((prevData) => {
             return [...prevData, values];
         });
 
