@@ -4,6 +4,7 @@ import { Formik, Field, Form, ErrorMessage } from 'formik';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import * as Yup from 'yup';
 import { addDoc } from 'firebase/firestore';
+import { getContact } from 'components/API/contacts';
 
 const initialValues = {
     name: '',
@@ -25,9 +26,10 @@ const validationSchema = Yup.object({
 const NameInput = ({ contactsCollect, setDataForRender, setData }) => {
     const handleSubmit = async (values, { resetForm }) => {
         await addDoc(contactsCollect, { ...values, createdAt: new Date() });
-        setDataForRender((prevData) => {
-            return [...prevData, values];
-        });
+        // setDataForRender((prevData) => {
+        //     return [...prevData, values];
+        // });
+        getContact(setData, setDataForRender);
 
         resetForm();
     };

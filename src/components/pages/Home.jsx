@@ -16,6 +16,7 @@ import {
 import NameInput from 'components/nameInput/NameInput';
 import Filter from 'components/filter/Filter';
 import Contacts from 'components/contacts/Contacts';
+import { getContact } from 'components/API/contacts';
 
 function Home() {
     const [data, setData] = useState([]);
@@ -27,26 +28,8 @@ function Home() {
     const contactsCollect = collection(db, 'contacts');
 
     useEffect(() => {
-        const getContact = async () => {
-            const first = query(contactsCollect, orderBy('createdAt'), limit(limitPerPage));
-            try {
-                const data = await getDocs(contactsCollect);
-                const parsed = data.docs.map((doc) => ({
-                    ...doc.data(),
-                    id: doc.id,
-                }));
-                setData(parsed);
-                const firstPage = await getDocs(first);
-                const documentSnapshots = firstPage.docs.map((doc) => ({
-                    ...doc.data(),
-                    id: doc.id,
-                }));
-                setDataForRender(documentSnapshots);
-            } catch (error) {
-                console.log(error.message);
-            }
-        };
-        getContact();
+        getContact(setData, setDataForRender);
+
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
@@ -94,7 +77,7 @@ function Home() {
         try {
             const contact = doc(db, 'contacts', id);
             await deleteDoc(contact);
-            setDataForRender(dataForRender.filter((e) => e.id !== id));
+            getContact(setData, setDataForRender);
         } catch (error) {
             console.log(error.message);
         }
